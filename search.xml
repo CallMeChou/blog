@@ -35,6 +35,35 @@
     
     
     <entry>
+      <title>常用网站合集</title>
+      <link href="/blog/2021/11/30/%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/"/>
+      <url>/blog/2021/11/30/%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="随机图片"><a href="#随机图片" class="headerlink" title="随机图片"></a>随机图片</h1><h2 id="随机图片Picsum"><a href="#随机图片Picsum" class="headerlink" title="随机图片Picsum"></a>随机图片Picsum</h2><p><a href="https://picsum.photos/">Lorem Picsum</a></p><h3 id="随机一张1920-1080的图片"><a href="#随机一张1920-1080的图片" class="headerlink" title="随机一张1920*1080的图片"></a>随机一张1920*1080的图片</h3><p><a href="https://picsum.photos/1920/1080">https://picsum.photos/1920/1080</a></p><h3 id="特定的图片（237是seed）"><a href="#特定的图片（237是seed）" class="headerlink" title="特定的图片（237是seed）"></a>特定的图片（237是seed）</h3><p>​    seed获取 <a href="https://picsum.photos/images">Lorem Picsum - Images</a></p><p><a href="https://picsum.photos/id/237/1920/1080">https://picsum.photos/id/237/1920/1080</a></p><h3 id="黑白"><a href="#黑白" class="headerlink" title="黑白"></a>黑白</h3><p><a href="https://picsum.photos/1920/1080?grayscale">https://picsum.photos/1920/1080?grayscale</a></p><h3 id="模糊"><a href="#模糊" class="headerlink" title="模糊"></a>模糊</h3><p><a href="https://picsum.photos/1920/1080?blur">https://picsum.photos/1920/1080?blur</a></p><p>​    模糊度1-10 <a href="https://picsum.photos/1920/1080?blur=2">https://picsum.photos/1920/1080?blur=2</a></p><h3 id="修改图片格式-jpg-webp"><a href="#修改图片格式-jpg-webp" class="headerlink" title="修改图片格式.jpg .webp"></a>修改图片格式.jpg .webp</h3><p><a href="https://picsum.photos/1920/1080.jpg">https://picsum.photos/1920/1080.jpg</a></p><h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a><strong>高级用法</strong></h3><p>列出图片</p><p>使用<code>/v2/list</code>端点获取图像列表。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://picsum.photos/v2/list</span><br></pre></td></tr></table></figure><p>默认情况下，API每页将返回30个项目。</p><p>要请求另一个页面，请使用<code>?page</code>参数。</p><p>要更改每页的项目数，请使用<code>?limit</code>参数。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://picsum.photos/v2/list?page=2&amp;limit=100</span><br></pre></td></tr></table></figure><p>该<code>Link</code>头包括关于下一首/上页分页信息</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;</span><br><span class="line">        &quot;id&quot;: &quot;0&quot;,</span><br><span class="line">        &quot;author&quot;: &quot;Alejandro Escamilla&quot;,</span><br><span class="line">        &quot;width&quot;: 5616,</span><br><span class="line">        &quot;height&quot;: 3744,</span><br><span class="line">        &quot;url&quot;: &quot;https://unsplash.com/...&quot;,</span><br><span class="line">        &quot;download_url&quot;: &quot;https://picsum.photos/...&quot;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>图像细节</p><p>使用<code>/id/&#123;id&#125;/info</code>端点获取有关特定图像的信息。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://picsum.photos/id/0/info</span><br></pre></td></tr></table></figure><p>您可以通过查看<code>Picsum-ID</code>标题或<code>User Comment</code>EXIF元数据中的字段来查找图像的ID 。</p><p>{ “id”: “0”, “author”: “Alejandro Escamilla”, “width”: 5616, “height”: 3744, “url”: “<a href="https://unsplash.com/%E2%80%A6%E2%80%9D">https://unsplash.com/…”</a>, “download_url”: “<a href="https://picsum.photos/%E2%80%A6%E2%80%9D">https://picsum.photos/…”</a> }</p><h2 id="一个好用的api"><a href="#一个好用的api" class="headerlink" title="一个好用的api"></a>一个好用的api</h2><p><a href="https://www.eee.dog/tech/rand-pic-api.html">随机图片API - EEE.DOG</a></p><p>比如bing壁纸：<a href="https://www.eee.dog/tech/rand-pic-api.html">https://www.eee.dog/tech/rand-pic-api.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网站合集 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网站 </tag>
+            
+            <tag> 实用 </tag>
+            
+            <tag> 工具箱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>gitee搭建图床</title>
       <link href="/blog/2021/11/30/gitee%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/"/>
       <url>/blog/2021/11/30/gitee%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</url>
