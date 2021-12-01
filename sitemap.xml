@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://hutters.gitee.io/blog/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/index.html</loc>
+    <loc>https://hutters.gitee.io/blog/2021/11/29/gitee-page-%E5%AE%89%E8%A3%85hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
     
     <lastmod>2021-12-01</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/2021/11/29/gitee-page-%E5%AE%89%E8%A3%85hexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>https://hutters.gitee.io/blog/2021/11/30/gitee%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</loc>
     
     <lastmod>2021-12-01</lastmod>
     
@@ -29,9 +29,9 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/2021/11/30/gitee%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A/</loc>
+    <loc>https://hutters.gitee.io/blog/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/index.html</loc>
     
-    <lastmod>2021-11-30</lastmod>
+    <lastmod>2021-12-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -143,6 +143,13 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/hexo/</loc>
+    <lastmod>2021-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -154,6 +161,13 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/categories/python/</loc>
+    <lastmod>2021-12-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/categories/gitee-page/</loc>
     <lastmod>2021-12-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
