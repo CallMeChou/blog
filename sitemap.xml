@@ -2,34 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hutters.gitee.io/blog/2021/12/04/%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0gitee/</loc>
+    
+    <lastmod>2021-12-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hutters.gitee.io/blog/2021/12/04/%E7%94%B5%E8%84%91%E5%92%8CU%E7%9B%98%E5%88%86%E7%9B%98/</loc>
-    
-    <lastmod>2021-12-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/html/test.html</loc>
-    
-    <lastmod>2021-12-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/html/qnyf.html</loc>
-    
-    <lastmod>2021-12-04</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/2021/12/04/im/</loc>
     
     <lastmod>2021-12-04</lastmod>
     
@@ -159,6 +141,20 @@
   </url>
   
   <url>
+    <loc>https://hutters.gitee.io/blog/tags/git/</loc>
+    <lastmod>2021-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E7%94%B5%E8%84%91%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2021-12-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hutters.gitee.io/blog/tags/python/</loc>
     <lastmod>2021-12-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -181,13 +177,6 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/tags/%E5%85%B6%E4%BB%96/</loc>
-    <lastmod>2021-12-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E7%94%B5%E8%84%91%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2021-12-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
