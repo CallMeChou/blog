@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>excel技巧合集</title>
+      <link href="/blog/2021/12/10/excel%E6%8A%80%E5%B7%A7/"/>
+      <url>/blog/2021/12/10/excel%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="斜线表头"><a href="#斜线表头" class="headerlink" title="斜线表头"></a>斜线表头</h1><p>1.选中文字 <strong>Ctrl+1</strong> 分别设置为上下标</p><p><img src="https://s2.loli.net/2021/12/10/F1wsXjRzB9KJq4u.png" alt="image-20211210132251360"></p><p>2.选中这个单元格 <strong>Ctrl+1</strong> 设置为右斜线</p><p><img src="https://s2.loli.net/2021/12/10/1Q5s7hvenq3j2NZ.png" alt="image-20211210132533383"></p><p>3.适当放大字体就可以了</p><p><img src="https://s2.loli.net/2021/12/10/wc3zZ1I7EYu5xiH.png" alt="image-20211210132754219"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> excel </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> office技巧 </tag>
+            
+            <tag> execel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库操作技巧</title>
       <link href="/blog/2021/12/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/"/>
       <url>/blog/2021/12/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/</url>
