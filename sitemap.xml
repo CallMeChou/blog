@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hutters.gitee.io/blog/2021/12/10/Office%E6%8A%80%E5%B7%A7/</loc>
+    
+    <lastmod>2021-12-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://hutters.gitee.io/blog/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/index.html</loc>
     
     <lastmod>2021-12-20</lastmod>
@@ -57,24 +66,6 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/2021/12/14/termux%E8%BF%90%E8%A1%8Cpython/</loc>
-    
-    <lastmod>2021-12-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/2021/12/17/word%E6%8A%80%E5%B7%A7/</loc>
-    
-    <lastmod>2021-12-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/2021/12/10/excel%E6%8A%80%E5%B7%A7/</loc>
     
     <lastmod>2021-12-17</lastmod>
     
@@ -200,6 +191,13 @@
 
   
   <url>
+    <loc>https://hutters.gitee.io/blog/tags/office/</loc>
+    <lastmod>2021-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hutters.gitee.io/blog/tags/aidlux/</loc>
     <lastmod>2021-12-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -222,20 +220,6 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/tags/bat/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/excel%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/execel/</loc>
     <lastmod>2021-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -270,6 +254,13 @@
   </url>
   
   <url>
+    <loc>https://hutters.gitee.io/blog/tags/stata/</loc>
+    <lastmod>2021-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hutters.gitee.io/blog/tags/%E7%99%BD%E5%AB%96/</loc>
     <lastmod>2021-12-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -298,7 +289,21 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/stata/</loc>
+    <loc>https://hutters.gitee.io/blog/tags/%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2021-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E5%AE%9E%E7%94%A8/</loc>
+    <lastmod>2021-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E5%B7%A5%E5%85%B7%E7%AE%B1/</loc>
     <lastmod>2021-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -312,14 +317,28 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/word%E6%8A%80%E5%B7%A7/</loc>
+    <loc>https://hutters.gitee.io/blog/tags/git/</loc>
     <lastmod>2021-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/word/</loc>
+    <loc>https://hutters.gitee.io/blog/tags/%E8%A5%BF%E8%A5%BF%E4%BA%92%E6%8A%95/</loc>
+    <lastmod>2021-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2021-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E7%94%B5%E8%84%91%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2021-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -347,55 +366,6 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E7%BD%91%E7%AB%99/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E5%AE%9E%E7%94%A8/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E5%B7%A5%E5%85%B7%E7%AE%B1/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/git/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E7%94%B5%E8%84%91%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E8%A5%BF%E8%A5%BF%E4%BA%92%E6%8A%95/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hutters.gitee.io/blog/tags/%E8%BF%90%E8%90%A5%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2021-12-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -403,6 +373,13 @@
   </url>
   
 
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/categories/office%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2021-12-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://hutters.gitee.io/blog/categories/python/</loc>
@@ -413,13 +390,6 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/categories/bat/</loc>
-    <lastmod>2021-12-20</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/categories/office%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2021-12-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
