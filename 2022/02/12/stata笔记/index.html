@@ -1,0 +1,753 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>stata笔记 | blog for chou</title><meta name="keywords" content="python,笔记,stata"><meta name="author" content="chou"><meta name="copyright" content="chou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="常用命令  help 相当鸡肋的系统帮助页面  search 在网上获取帮助，鸡肋   cd 设置文件路径   memory 设置内存set memory 20m 设置STATA 的内存空间为20m  输出保留两位小数 f(%9.2f) tabstat wage educ tenure exper,stat(count mean sd min p1 p25 p50 p75 p99 max) f(%">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stata笔记">
+<meta property="og:url" content="https://hutters.gitee.io/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="blog for chou">
+<meta property="og:description" content="常用命令  help 相当鸡肋的系统帮助页面  search 在网上获取帮助，鸡肋   cd 设置文件路径   memory 设置内存set memory 20m 设置STATA 的内存空间为20m  输出保留两位小数 f(%9.2f) tabstat wage educ tenure exper,stat(count mean sd min p1 p25 p50 p75 p99 max) f(%">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://api.yimian.xyz/img?type=wallpaper">
+<meta property="article:published_time" content="2022-02-12T12:02:44.918Z">
+<meta property="article:modified_time" content="2021-12-23T06:25:35.130Z">
+<meta property="article:author" content="chou">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="stata">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.yimian.xyz/img?type=wallpaper"><link rel="shortcut icon" href="/blog/img/favicon.png"><link rel="canonical" href="https://hutters.gitee.io/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":1000,"languages":{"author":"作者: chou","link":"链接: ","source":"来源: blog for chou","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-left"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'stata笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-23 14:25:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/11/30/ZeyqM7NvoDnwuLp.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">17</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">25</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/"><i class="fa-fw fas fa-space-shuttle"></i><span> 实用网站</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://api.yimian.xyz/img?type=wallpaper')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">blog for chou</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/"><i class="fa-fw fas fa-space-shuttle"></i><span> 实用网站</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">stata笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-12T12:02:44.918Z" title="发表于 2022-02-12 20:02:44">2022-02-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-23T06:25:35.130Z" title="更新于 2021-12-23 14:25:35">2021-12-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">数据分析</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="stata笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211218172842866.png" class="" title="image-20211218172842866">
+
+<h2 id="help"><a href="#help" class="headerlink" title="help"></a>help</h2><blockquote>
+<p>相当鸡肋的系统帮助页面</p>
+</blockquote>
+<h2 id="search"><a href="#search" class="headerlink" title="search"></a>search</h2><blockquote>
+<p>在网上获取帮助，鸡肋</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/17/D3FWt4cQzKI7bhd.png" alt="image-20211117174229083"></p>
+<h2 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h2><blockquote>
+<p>设置文件路径</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/17/vkyhFMzNOdirASs.png" alt="image-20211117173306514"></p>
+<h2 id="memory"><a href="#memory" class="headerlink" title="memory"></a>memory</h2><blockquote>
+<p>设置内存<br>set memory 20m 设置STATA 的内存空间为20m</p>
+</blockquote>
+<h2 id="输出保留两位小数-f-9-2f"><a href="#输出保留两位小数-f-9-2f" class="headerlink" title="输出保留两位小数 f(%9.2f)"></a>输出保留两位小数 f(%9.2f)</h2><blockquote>
+<p>tabstat wage educ tenure exper,stat(count mean sd min p1 p25 p50 p75 p99 max) f(%9.2f)</p>
+</blockquote>
+<h2 id="🤔输出结果"><a href="#🤔输出结果" class="headerlink" title="🤔输出结果"></a>🤔输出结果</h2><p>第一种 右键</p>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211215084839274.png" class="" title="image-20211215084839274">
+
+
+
+
+
+<p>第二种 asdoc</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssc install asdoc, replace</span><br></pre></td></tr></table></figure>
+
+<p>asdoc xxxx</p>
+<h2 id="打开和保存数据"><a href="#打开和保存数据" class="headerlink" title="打开和保存数据"></a>打开和保存数据</h2><h3 id="•-clear-清空内存数据"><a href="#•-clear-清空内存数据" class="headerlink" title="• clear 清空内存数据"></a>• clear 清空内存数据</h3><h3 id="•-use-打开STATA-格式的数据文件"><a href="#•-use-打开STATA-格式的数据文件" class="headerlink" title="• use 打开STATA 格式的数据文件"></a>• use 打开STATA 格式的数据文件</h3><h3 id="•-save-保存内存中的数据"><a href="#•-save-保存内存中的数据" class="headerlink" title="• save 保存内存中的数据"></a>• save 保存内存中的数据</h3><h2 id="input"><a href="#input" class="headerlink" title="input"></a>input</h2><blockquote>
+<p>录入数据</p>
+<p>input x 录入列名为x的数据</p>
+</blockquote>
+<h2 id="end"><a href="#end" class="headerlink" title="end"></a>end</h2><blockquote>
+<p>结束输入</p>
+</blockquote>
+<h2 id="sum"><a href="#sum" class="headerlink" title="sum"></a>sum</h2><p>观察值个数，平均值，方差，最小值和最大值</p>
+<p><img src="https://i.loli.net/2021/11/19/1Z3MkcAvzUCa4pq.png" alt="image-20211119111506367"></p>
+<h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><blockquote>
+<p>sort grade 排序(按grade从低到高)</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/19/8jWbQ9gpP275M6c.png" alt="image-20211119112322033"></p>
+<p><img src="https://i.loli.net/2021/11/19/aUJqD2kP7ZRzMN4.png" alt="image-20211119112342709"></p>
+<h2 id="gen"><a href="#gen" class="headerlink" title="gen"></a>gen</h2><blockquote>
+<p>生成新的变量</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/19/Db3i9zl4u67YTwA.png" alt="image-20211119115024164"></p>
+<p><img src="https://i.loli.net/2021/11/19/lYnoSEDM59FmBjC.png" alt="image-20211119115035558"></p>
+<h2 id="egen"><a href="#egen" class="headerlink" title="egen"></a>egen</h2><p>生成新的数据</p>
+<h2 id="rename"><a href="#rename" class="headerlink" title="rename"></a>rename</h2><blockquote>
+<p>重命名变量名</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/19/C39QYmIK2gTUBzX.png" alt="image-20211119134735478"></p>
+<h2 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h2><blockquote>
+<p>直接改变原变量的赋值</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/19/q7RHMWL1nXQhjvG.png" alt="image-20211119115245310"></p>
+<h2 id="edit"><a href="#edit" class="headerlink" title="edit"></a>edit</h2><blockquote>
+<p>编辑数据，输入<code>edit</code>会打开数据编辑器</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/17/xcZTY1rBsLM9ldG.png" alt="image-20211117174813665"></p>
+<h2 id="display"><a href="#display" class="headerlink" title="display"></a>display</h2><blockquote>
+<p>显示计算结果<code>disp normal(1)</code>结果是0.5</p>
+</blockquote>
+<h2 id="describ"><a href="#describ" class="headerlink" title="describ"></a>describ</h2><blockquote>
+<p>d 直接输入d</p>
+<p>describ 命令显示数据集的属性信息</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/19/UHG5pJjXzQLh29A.png" alt="image-20211119132810062"></p>
+<h2 id="set-more-off-on"><a href="#set-more-off-on" class="headerlink" title="set more off/on"></a>set more off/on</h2><blockquote>
+<p>是否显示全部数据on 意思是不显示全部</p>
+<p>在列示1 到1000 之前，若先设置set more off，则屏幕不停止；反之set more on 会使显示停止。</p>
+</blockquote>
+<h2 id="clear"><a href="#clear" class="headerlink" title="clear"></a>clear</h2><blockquote>
+<p>清除内存中原有内容，不把你的数据删了（慎用）</p>
+</blockquote>
+<h2 id="drop"><a href="#drop" class="headerlink" title="drop"></a>drop</h2><blockquote>
+<p>drop_all删除全部数据，效果同clear</p>
+<p>drop x 删除x这一列数据</p>
+</blockquote>
+<h2 id="tabulate"><a href="#tabulate" class="headerlink" title="tabulate"></a>tabulate</h2><p>频数分析</p>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211218175133834.png" class="" title="image-20211218175133834">
+
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><blockquote>
+<p>list x显示示x列的数据</p>
+<p>list 显示全部数据</p>
+</blockquote>
+<h2 id="暂时没用到的"><a href="#暂时没用到的" class="headerlink" title="暂时没用到的"></a>暂时没用到的</h2><p>• infile 导入数据<br>• insheet 导入数据<br>重整数据<br>• append 将有相同结果的数据纵向拼接（观察值拼接）<br>• merge 将两个数据文件横向拼接<br>• xpose 数据转置<br>• reshape<br>• generate 生成新的数据<br>• egen 生成新的数据<br>• rename 变量重命令<br>• drop 删除变量或观察值<br>• keep 保留变量或观察值<br>• sort 对观察值按从小到大顺序重新排列<br>• encode 数值型数据转换为字符型数据<br>• decode 字符型数据转换为数值型数据<br>• order 变量顺序的重新排列<br>• by 分类操作<br>报告数据<br>• describe 总体展示数据情况<br>• codebook 展示数据库中的每个变量情况<br>• list 列示内存中的数据<br>• count 报告共有多少观察值<br>• inspect 报告变量的分布<br>• table 数据列表<br>• tabulate 联列表<br>显示和保存输出结果</p>
+<p>• log 将输出结果存放入结果文件</p>
+<h1 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h1><h2 id="1-创建完整文件"><a href="#1-创建完整文件" class="headerlink" title="1.创建完整文件"></a>1.创建完整文件</h2><p><img src="https://i.loli.net/2021/11/19/WoBFUdXmLwjhpS9.png" alt="image-20211119135508436"></p>
+<h2 id="2-才拆分合并数据"><a href="#2-才拆分合并数据" class="headerlink" title="2.才拆分合并数据"></a>2.才拆分合并数据</h2><p><img src="https://i.loli.net/2021/11/19/IsalnCdh8tRxB6Q.png" alt="image-20211119135522284"></p>
+<h2 id="3-数据重组"><a href="#3-数据重组" class="headerlink" title="3.数据重组"></a>3.数据重组</h2><p><img src="https://i.loli.net/2021/11/19/ejNHEkaz3cvBtFV.png" alt="image-20211119140305401"></p>
+<h1 id="变量的省略规则"><a href="#变量的省略规则" class="headerlink" title="变量的省略规则"></a>变量的省略规则</h1><p>只要不引起歧义，命令可以尽量只写前几个字母。如summarize 只需要前两个字母su；而<br>list 只需要写第一个字母l。在帮助文件中，命令下面有小划线，该线表明了命令可以省略<br>到什么程度。如<br><u>l</u>ist [varlist] [if] [in] [, options]<br><u>su</u>mmarize [varlist] [if] [in] [weight] [, options]</p>
+<h1 id="变量命名规则"><a href="#变量命名规则" class="headerlink" title="变量命名规则"></a>变量命名规则</h1><blockquote>
+<p>和Python差不多</p>
+</blockquote>
+<p>除以下字符不能用作变量名外，任何字母、字母与数字(单独的数字也不允许)组合均可用做<br>变量名：_all _b byte _coef _cons double float if in int long _n _N _pi _pred _rc _se _skip using with</p>
+<p>基本要求如下：</p>
+<ol>
+<li>第一个字元可以是英文字母或, 但不能是数字；</li>
+<li> 最多只能包括32 个英文字母、数字或下划线；</li>
+<li>由于STATA 保留了很多以“ _“开头的内部变量，所以最好不要用为第一个字元来定义变量。</li>
+</ol>
+<h1 id="命令语句"><a href="#命令语句" class="headerlink" title="命令语句"></a>命令语句</h1><h2 id="command"><a href="#command" class="headerlink" title="command"></a>command</h2><p><code>command  [=exp] [if exp] [in range] [weight] [, options]</code></p>
+<p>注：[ ]表示可有可无的项,显然只有command 是必不可少的</p>
+<blockquote>
+<p>. cd d:/stata9<br>. use auto, clear //打开美国汽车数据文件auto.dta,后面的clear 表示先清除内<br>存中可能存在的数据集<br>. summarize /*很多命令可单独使用，单独使用时，一般是对所有变量进<br>行操作，等价于后面加上代表所有变量的_all。 */<br>. summarize _all //注意到该命令输出结果与上一个命令完全一样<br>. sum //与前一命令等价，sum 为summarize 的略写<br>. su // su 是summarize 的最简化略写，不能再简化为s<br>. s //简写前提是不引起混淆。执行这个命令将出现错误信息</p>
+</blockquote>
+<h2 id="varlist"><a href="#varlist" class="headerlink" title="varlist"></a>varlist</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">command [varlist] [=exp] [if exp] [in range] [weight] [, options]</span><br></pre></td></tr></table></figure>
+
+<p><strong>varlist</strong> 表示一个变量，或者多个变量，多个变量之间用空格隔开。</p>
+<p>. cd d:/stata9<br>. use auto, clear</p>
+<h2 id="by-varlist-分类操作"><a href="#by-varlist-分类操作" class="headerlink" title="by varlist 分类操作"></a>by varlist 分类操作</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[by varlist:] command [varlist] [=exp] [if exp] [in range] [weight] [, options]</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>sort foreign //按国产车和进口车排序<br>by foreign: sum price weight</p>
+<p>注意必须先sort  foreign 这个变量 才能 by foreign先排序再分类</p>
+</blockquote>
+<h2 id="赋值及运算-exp"><a href="#赋值及运算-exp" class="headerlink" title="赋值及运算=exp"></a>赋值及运算=exp</h2><p>[by varlist:] command [varlist] [=exp] [if exp] [in range] [weight] [, options]</p>
+<blockquote>
+<p>|或</p>
+<p>&amp;和</p>
+<p>&lt;&gt; 大于小于                                                                                                                                                                                                                    </p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/19/WOaHTsRKbIZP6El.png" alt="image-20211119130118433"></p>
+<p><img src="https://i.loli.net/2021/11/19/qd3D5kZU7xB9J18.png" alt="image-20211119130054370"></p>
+<h2 id="范围筛选in-range"><a href="#范围筛选in-range" class="headerlink" title="范围筛选in range"></a>范围筛选in range</h2><p>[by varlist:] command [varlist] [=exp] [if exp] [in range] [weight] [, options]</p>
+<p><img src="https://i.loli.net/2021/11/19/BEXr7zLtZMbN5Sc.png" alt="image-20211119130637934"></p>
+<h2 id="加权weight"><a href="#加权weight" class="headerlink" title="加权weight"></a>加权weight</h2><p><img src="https://i.loli.net/2021/11/19/evKSoCVgB5i2Im8.png" alt="image-20211119131434362"></p>
+<p><img src="https://i.loli.net/2021/11/19/fbqdwMoXGsUF9Sv.png" alt="image-20211119131504745"></p>
+<h2 id="其他可选项-options"><a href="#其他可选项-options" class="headerlink" title="其他可选项,options"></a>其他可选项,options</h2><p><img src="https://i.loli.net/2021/11/19/Cc8EuaVvHp5mdsS.png" alt="image-20211119131823415"></p>
+<hr>
+<blockquote>
+<p>sum grade</p>
+</blockquote>
+<p> Variable |        Obs        Mean    Std. Dev.       Min        Max<br>————-+———————————————————<br>       grade |         50         6.3    2.178279          2         10</p>
+<h3 id="detail可以显示细节的内容"><a href="#detail可以显示细节的内容" class="headerlink" title="detail可以显示细节的内容"></a>detail可以显示细节的内容</h3><p><img src="https://i.loli.net/2021/11/19/aHg1CJsxwkzMAPc.png" alt="image-20211119131653520"></p>
+<img src="https://i.loli.net/2021/11/19/rcvOl1DhXMnabuA.png" alt="image-20211119132017578" style="zoom: 50%;" />
+
+<h3 id="sep-x-每x行添加一个横线"><a href="#sep-x-每x行添加一个横线" class="headerlink" title="sep(x)每x行添加一个横线"></a>sep(x)每x行添加一个横线</h3><p><img src="https://i.loli.net/2021/11/19/zKt5w49jubWaJ28.png" alt="image-20211119132221518"></p>
+<h1 id="数据类型转化"><a href="#数据类型转化" class="headerlink" title="数据类型转化"></a>数据类型转化</h1><h2 id="字符型转化成数值型：destring"><a href="#字符型转化成数值型：destring" class="headerlink" title="字符型转化成数值型：destring"></a>字符型转化成数值型：destring</h2><h2 id="数值型转化为字符型：tostring"><a href="#数值型转化为字符型：tostring" class="headerlink" title="数值型转化为字符型：tostring"></a>数值型转化为字符型：tostring</h2><h1 id="数据显示格式-format"><a href="#数据显示格式-format" class="headerlink" title="数据显示格式:format"></a>数据显示格式:format</h1><h1 id="stata函数"><a href="#stata函数" class="headerlink" title="stata函数"></a>stata函数</h1><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211218172524770.png" class="" title="image-20211218172524770">
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211218172536879.png" class="" title="image-20211218172536879">
+
+
+
+
+
+
+
+<h1 id="正态分布、F分布、卡方分布的概率密度和分位数"><a href="#正态分布、F分布、卡方分布的概率密度和分位数" class="headerlink" title="正态分布、F分布、卡方分布的概率密度和分位数"></a>正态分布、F分布、卡方分布的概率密度和分位数</h1><h2 id="normal-正态分布概率密度"><a href="#normal-正态分布概率密度" class="headerlink" title="normal 正态分布概率密度"></a>normal 正态分布概率密度</h2><p><img src="https://i.loli.net/2021/11/17/vO6nl8FpcMPWdEi.png" alt="image-20211117163539508"></p>
+<h2 id="invnormal正态分布分位数"><a href="#invnormal正态分布分位数" class="headerlink" title="invnormal正态分布分位数"></a>invnormal正态分布分位数</h2><p><img src="https://i.loli.net/2021/11/17/goa4qenZrCbytFU.png" alt="image-20211117163519963"></p>
+<h2 id="t分布概率密度"><a href="#t分布概率密度" class="headerlink" title="t分布概率密度"></a>t分布概率密度</h2><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211222213518759.png" class="" title="image-20211222213518759">
+
+<h2 id="t分布分位数计算"><a href="#t分布分位数计算" class="headerlink" title="t分布分位数计算"></a>t分布分位数计算</h2><p><img src="https://i.loli.net/2021/11/17/fJFqUHuyiescBNw.png" alt="image-20211117163716423"></p>
+<h2 id="卡方分布概率密度"><a href="#卡方分布概率密度" class="headerlink" title="卡方分布概率密度"></a>卡方分布概率密度</h2><p><img src="https://i.loli.net/2021/11/17/vHP7NupOe2zCba9.png" alt="image-20211117163827163"></p>
+<h2 id="卡方分布分位数"><a href="#卡方分布分位数" class="headerlink" title="卡方分布分位数"></a>卡方分布分位数</h2><p><img src="https://i.loli.net/2021/11/17/aYFrkdpUbZjo1tG.png" alt="image-20211117163859129"></p>
+<h2 id="F分布概率密度"><a href="#F分布概率密度" class="headerlink" title="F分布概率密度"></a>F分布概率密度</h2><p><img src="https://i.loli.net/2021/11/17/zkx6BrLKC3RiXp4.png" alt="image-20211117163918482"></p>
+<h2 id="F分布分位数"><a href="#F分布分位数" class="headerlink" title="F分布分位数"></a>F分布分位数</h2><p><img src="https://i.loli.net/2021/11/17/PM8XYoUyvhJzfgp.png" alt="image-20211117163940569"></p>
+<h1 id="区间估计（补充知识）"><a href="#区间估计（补充知识）" class="headerlink" title="区间估计（补充知识）"></a>区间估计（补充知识）</h1><p>一、区间估计</p>
+<p>（一）命令</p>
+<ol>
+<li>直接命令为：cii 样本量  样本均数  样本标准差, level(99)</li>
+</ol>
+<p>例如，变量wage的描述统计如下：</p>
+<p>Variable     Obs   Mean    Std. Dev.  </p>
+<p>wage      526   5.896103   3.693086  </p>
+<p>则可以运用cii命令直接构建其置信区间：</p>
+<p>cii 526 5.9 3.7, level(99)</p>
+<p>注意：level(99)中的99表示置信概率为99%，该值可以根据需要改变。</p>
+<ol start="2">
+<li>原始数据的命令：ci 变量,level(99)</li>
+</ol>
+<p>如当前环境中有变量wage（直接建立或输入），则可以运用ci命令构造其置信区间：</p>
+<p>ci wage,level(99</p>
+<h1 id="假设检验（补充）"><a href="#假设检验（补充）" class="headerlink" title="假设检验（补充）"></a>假设检验（补充）</h1><p><strong>原假设</strong>一般是研究者怀疑的假设</p>
+<p>备择假设是研究者想收集证据予以支持的的假设</p>
+<h2 id="传统假设检验"><a href="#传统假设检验" class="headerlink" title="传统假设检验"></a>传统假设检验</h2><blockquote>
+<p>一般不用</p>
+</blockquote>
+<h2 id="❗待完善-p值假设检验"><a href="#❗待完善-p值假设检验" class="headerlink" title="(❗待完善)p值假设检验"></a>(❗待完善)p值假设检验</h2><p>1.<strong>显著性水平p值：检验者可以容忍的犯第一类错误的概率</strong></p>
+<p>2.<strong>第一类错误 ：H0真 但判断H0假</strong></p>
+<blockquote>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211215101600546.png" class="" title="image-20211215101600546">
+</blockquote>
+<p>3.一般样本容量n&gt;30都认为是大样本，可以按正态分布计算</p>
+<p>4.较小的p值是拒绝原假设H0的证据</p>
+<p>（一）直接命令为：</p>
+<blockquote>
+<p>ttesti  样本量  样本均数 样本标准差  （待检验的总体均数）</p>
+</blockquote>
+<p>（二）原始数据的命令：</p>
+<blockquote>
+<p>ttest 变量名 = （待检验的总体均数）使用说明：如当前环境中有变量wage（直接建立或输入），则可以运用ci命令构造其置信区间：</p>
+</blockquote>
+<p>ttest wage=6</p>
+<h1 id="变量分布形态和假设检验"><a href="#变量分布形态和假设检验" class="headerlink" title="变量分布形态和假设检验"></a>变量分布形态和假设检验</h1><h2 id="分布状况"><a href="#分布状况" class="headerlink" title="分布状况"></a>分布状况</h2><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214225507399.png" class="" title="image-20211214225507399">
+
+
+
+<p>偏度</p>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214225815338.png" class="" title="image-20211214225815338">
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214225904858.png" class="" title="image-20211214225904858">
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214230016573.png" class="" title="image-20211214230016573">
+
+
+
+<blockquote>
+<p>Skewness 偏度</p>
+<p>Kurtosis 峰度</p>
+<p>su wage,detail</p>
+<p>tabstat wage,stat(count skewness  kurtosis )</p>
+</blockquote>
+<h2 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h2><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211215091947579.png" class="" title="image-20211215091947579">
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211215092055082.png" class="" title="image-20211215092055082">
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211215092107108.png" class="" title="image-20211215092107108">
+
+
+
+<blockquote>
+<p>sktest wage aaa bb cc </p>
+</blockquote>
+<h3 id="参数假设检验"><a href="#参数假设检验" class="headerlink" title="参数假设检验"></a>参数假设检验</h3><p><img src="https://i.loli.net/2021/11/24/nZmc96BWvwH2oaY.png" alt="image-20211124114400154"></p>
+<blockquote>
+<p>sktest wage</p>
+<p>skwilk wage</p>
+</blockquote>
+<p>H0：变量服从正态分布</p>
+<p>H1：变量不服从正态分布</p>
+<p>输入sktest wage/skwilk可以得到pr(skewness)偏度、 pr(kurtosis)峰度、 prob&gt;chi2这个值很小的话就代表不符合原假设的正态分布</p>
+<h3 id="非参数的假设检验"><a href="#非参数的假设检验" class="headerlink" title="非参数的假设检验"></a>非参数的假设检验</h3><blockquote>
+<p>signrank before=after</p>
+<p>signtest before=after</p>
+</blockquote>
+<h1 id="相关系数计算和检验"><a href="#相关系数计算和检验" class="headerlink" title="相关系数计算和检验"></a>相关系数计算和检验</h1><h2 id="相关性计算"><a href="#相关性计算" class="headerlink" title="相关性计算"></a>相关性计算</h2><blockquote>
+<p>相关系数0.3-0.8是弱相关性</p>
+<p>0.8以上强相关</p>
+<p>0.3以下无相关性</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/24/57gmiMYorw1Sh8n.png" alt="image-20211124114954542"></p>
+<p><img src="https://i.loli.net/2021/11/24/vwcIlQ1atuJ2KDV.png" alt="image-20211124120029771"></p>
+<p>1.person</p>
+<p><img src="https://i.loli.net/2021/11/24/IG1DxK7Coy9jHWJ.png" alt="image-20211124115459157"></p>
+<p><img src="https://i.loli.net/2021/11/24/j4enxtZFGBhr6Mo.png" alt="image-20211124115015477"></p>
+<blockquote>
+<p>correlate a b c</p>
+<p><img src="https://i.loli.net/2021/11/24/yapsKBwL6fFgSZI.png" alt="image-20211124115414303"></p>
+</blockquote>
+<blockquote>
+<p>pwcorr a b c,sig star(0.05)</p>
+</blockquote>
+<p>2.spearman</p>
+<p><img src="https://i.loli.net/2021/11/24/KYq4sQkm5iwIvWN.png" alt="image-20211124115547613"></p>
+<blockquote>
+<p>spearman a b c,stats(rho p)</p>
+<p>rho：相关系数</p>
+<p>p:假设检验</p>
+</blockquote>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217090222175.png" class="" title="image-20211217090222175">
+
+<p>3.kendall</p>
+<p><img src="https://i.loli.net/2021/11/24/JVlZ95MYtob13Ck.png" alt="image-20211124115820704"></p>
+<blockquote>
+<p>ktau wage  educ  tenure  exper,stats(taua taub p)</p>
+</blockquote>
+<h2 id="多变量分布检查（了解）"><a href="#多变量分布检查（了解）" class="headerlink" title="多变量分布检查（了解）"></a>多变量分布检查（了解）</h2><p>多变量联合正态分布</p>
+<p><img src="https://i.loli.net/2021/11/24/BtjcpvDOA5NFgfd.png" alt="image-20211124120141737"></p>
+<blockquote>
+<p>mvtest normality a b,univariate</p>
+</blockquote>
+<p><img src="https://i.loli.net/2021/11/24/pIodY4klOLcRv7M.png" alt="image-20211124120333991"></p>
+<p><img src="https://i.loli.net/2021/11/24/vVE6w2p9kP7eZ5N.png" alt="image-20211124120435599"></p>
+<h1 id="单变量和多变量的统计分析"><a href="#单变量和多变量的统计分析" class="headerlink" title="单变量和多变量的统计分析"></a>单变量和多变量的统计分析</h1><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217091323820.png" class="" title="image-20211217091323820">
+
+
+
+
+
+<h2 id="单样本下总体均值的比较"><a href="#单样本下总体均值的比较" class="headerlink" title="单样本下总体均值的比较"></a>单样本下总体均值的比较</h2><p>单样本总体均值的比较是根据样本数据检验总体均值与某个特定数之间是否存在显著差异</p>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217093643351.png" class="" title="image-20211217093643351">
+
+<blockquote>
+<p>ttesti  样本量  样本均数 样本标准差  （待检验的总体均数）</p>
+</blockquote>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217140404624.png" class="" title="image-20211217140404624">
+
+
+
+<blockquote>
+<p>signtest height=115</p>
+<p>signrank height=115</p>
+<p>❗如果差别比较大按signrank为主</p>
+</blockquote>
+<h2 id="参数型成组设计两样本总体均值的比较"><a href="#参数型成组设计两样本总体均值的比较" class="headerlink" title="参数型成组设计两样本总体均值的比较"></a>参数型成组设计两样本总体均值的比较</h2><blockquote>
+<p>待检验数据符合正态分布</p>
+</blockquote>
+<p>样本数据：</p>
+<table>
+<thead>
+<tr>
+<th>jiaoqu</th>
+<th>city</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>108</td>
+<td>110</td>
+</tr>
+<tr>
+<td>112</td>
+<td>123</td>
+</tr>
+<tr>
+<td>129</td>
+<td>109</td>
+</tr>
+<tr>
+<td>131</td>
+<td>130</td>
+</tr>
+<tr>
+<td>118</td>
+<td>125</td>
+</tr>
+<tr>
+<td>121</td>
+<td>120</td>
+</tr>
+<tr>
+<td>115</td>
+<td>119</td>
+</tr>
+<tr>
+<td>110</td>
+<td>118</td>
+</tr>
+<tr>
+<td>124</td>
+<td>115</td>
+</tr>
+<tr>
+<td>120</td>
+<td>121</td>
+</tr>
+<tr>
+<td>116</td>
+<td>117</td>
+</tr>
+<tr>
+<td>120</td>
+<td>125</td>
+</tr>
+</tbody></table>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217141437363.png" class="" title="image-20211217141437363">
+
+
+
+<p><strong>首先提出假设：</strong></p>
+<p><strong>H0：城区和郊区男童身高相等</strong></p>
+<p><strong>H1：城区和郊区男童身高不相等</strong></p>
+<h3 id="第一步-需要先对每组变量进行正态分布的假设检验"><a href="#第一步-需要先对每组变量进行正态分布的假设检验" class="headerlink" title="第一步.需要先对每组变量进行正态分布的假设检验"></a>第一步.需要先对每组变量进行正态分布的假设检验</h3><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217141507518.png" class="" title="image-20211217141507518">
+
+<blockquote>
+<p>swilk  jiaoqu city</p>
+<p>sktest jiaoqu city</p>
+<p>根据p值得大小判断是否符合正态分布越接近1说明越符合正态分布</p>
+</blockquote>
+<h3 id="第二步-方差齐性检验"><a href="#第二步-方差齐性检验" class="headerlink" title="第二步.方差齐性检验"></a>第二步.方差齐性检验</h3><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217142641591.png" class="" title="image-20211217142641591">
+
+<blockquote>
+<p>H0：两组数据方差相等</p>
+<p>H1：两组数据方差不相等</p>
+<p>sdtest jiaoqu==city</p>
+</blockquote>
+<h3 id="第三步-前两步都满足的情况下"><a href="#第三步-前两步都满足的情况下" class="headerlink" title="第三步.前两步都满足的情况下"></a>第三步.前两步都满足的情况下</h3><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217143521426.png" class="" title="image-20211217143521426">
+
+<blockquote>
+<p>ttest jiaoqu==city</p>
+</blockquote>
+<h2 id="非参数性总体均值比较"><a href="#非参数性总体均值比较" class="headerlink" title="非参数性总体均值比较"></a>非参数性总体均值比较</h2><blockquote>
+<p> 如果参数均值比较第一步正态检验 不通过 就用非参数型</p>
+<p>同样要进行方差齐性检验sdtest</p>
+</blockquote>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217145457572.png" class="" title="image-20211217145457572">
+
+
+
+<blockquote>
+<p>signrank before=after</p>
+<p>signtest before=after</p>
+</blockquote>
+<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217150839758.png" class="" title="image-20211217150839758">
+
+
+
+
+
+<h2 id="多个独立样本的均值（中位数）的比较"><a href="#多个独立样本的均值（中位数）的比较" class="headerlink" title="多个独立样本的均值（中位数）的比较"></a>多个独立样本的均值（中位数）的比较</h2><p>参数的看方差分析</p>
+<p>非参数的：</p>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217153631098.png" class="" title="image-20211217153631098">
+
+
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217154418408.png" class="" title="image-20211217154418408">
+
+<blockquote>
+<p>kwallis wage,by(numdep)</p>
+</blockquote>
+<h1 id="方差分析-单因素（补充）"><a href="#方差分析-单因素（补充）" class="headerlink" title="方差分析-单因素（补充）"></a>方差分析-单因素（补充）</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
+<p>检验多个总体均值是否相等</p>
+<p>自变量：定类2个及以上</p>
+<p>因变量：连续变量</p>
+<p>主要用于随机化试验设计</p>
+</blockquote>
+<h2 id="提假设"><a href="#提假设" class="headerlink" title="提假设"></a>提假设</h2><p><strong>H0：u1=u2=u3=u4</strong></p>
+<p><strong>H1:u1,u2,u3,u4不全相等</strong></p>
+<p>总变动SST（误差）：所有样本观测值与总平均值的偏离的 平方的和</p>
+<blockquote>
+<p>1.总误差产生的原因：</p>
+<p>​    组内变动SSE——随机误差 =  组内样本与组平均之差的平方和</p>
+<p>​    组间变动SSA——系统误差 = <strong>每组平均数</strong>与<strong>总平均</strong>之差的<strong>平方和</strong></p>
+</blockquote>
+<h2 id="方差分析的基本思想和原理——方差的比较"><a href="#方差分析的基本思想和原理——方差的比较" class="headerlink" title="方差分析的基本思想和原理——方差的比较"></a>方差分析的基本思想和原理——方差的比较</h2><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211215110640698.png" class="" title="image-20211215110640698">
+
+
+
+<h2 id="计算步骤"><a href="#计算步骤" class="headerlink" title="计算步骤"></a>计算步骤</h2><p>计算组内平均</p>
+<p>计算组间平均</p>
+<p>计算总平均</p>
+<p>就算总变动SST</p>
+<p>计算组内变动SSE和组间变动SSA</p>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/4EA31A7A7FCB8B3F14AAD9E1190797A2.jpg" class="" title="img">
+
+
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/EC7E4802CFE94DC74E2AF57C94A06E66.jpg" class="" title="img">
+
+
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211217105654233.png" class="" title="image-20211217105654233">
+
+
+
+
+
+<h2 id="stata-处理方法"><a href="#stata-处理方法" class="headerlink" title="stata 处理方法"></a>stata 处理方法</h2><p>输入格式：</p>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211215113813384.png" class="" title="image-20211215113813384">
+
+<blockquote>
+<p> oneway sale colour,tabulate</p>
+<p>anova sale colour</p>
+<p>partial ss 组间变动</p>
+<p>df分子自由度 F(3,16,10.46)</p>
+<p>MS =partial ss/df</p>
+<p>F 检验量</p>
+</blockquote>
+<h1 id="方差分析-双因素"><a href="#方差分析-双因素" class="headerlink" title="方差分析-双因素"></a>方差分析-双因素</h1><p>residual误差项</p>
+<h1 id="stata绘图"><a href="#stata绘图" class="headerlink" title="stata绘图"></a>stata绘图</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><p>graph-command (plot-command, plot-options) (plot-command , plot-options) , graph-options</p>
+<p>或者</p>
+<p>graph-command plot-command,plot-options || plot-command , plot-options || , graph-options</p>
+<blockquote>
+<p>graph-command定义图的类型，plot-command 定义曲线类型,同一个图中如果有多条曲线可以用括号分开，也可以用“||”分开，曲线有其自身的选项，而整个图也有其选项。例如twoway为graph-command中的命令之一，而scatter为plot-command中的命令之一。</p>
+</blockquote>
+<p>STATA 提供各种曲线类型，包括点（scatter）、线（line）、面（area），直方图（histogram）、条形图（bar）、饼图（pie）、函数曲线（function）以及矩阵图（matrix）等。对时间序列数据有以ts 开头的一系列特殊命令，如tsline。还有一类是对双变量的回归拟合图（lfit、qfit 、lowess）等。</p>
+<h2 id="绘图常用命令"><a href="#绘图常用命令" class="headerlink" title="绘图常用命令"></a>绘图常用命令</h2><h3 id="标题项-title-xxx"><a href="#标题项-title-xxx" class="headerlink" title="标题项: title(xxx)"></a>标题项: title(xxx)</h3><h3 id="图的副标题：subtitle-xxx"><a href="#图的副标题：subtitle-xxx" class="headerlink" title="图的副标题：subtitle(xxx)"></a>图的副标题：subtitle(xxx)</h3><h3 id="坐标轴格式"><a href="#坐标轴格式" class="headerlink" title="坐标轴格式"></a>坐标轴格式</h3><p>1.默认有坐标轴、刻度线</p>
+<p>2.无坐标轴格式</p>
+<blockquote>
+<p>yscale(off)<br>xscale(off)<br>plotregion(style(none))</p>
+</blockquote>
+<p>3.无坐标轴，有刻度格式</p>
+<blockquote>
+<p>plotregion(style(none))<br>yscale(noline)<br>xscale(noline)</p>
+</blockquote>
+<p>4.双坐标轴格式</p>
+<blockquote>
+<p>line rainfall yield year //该命令等价于<br>tw (line rainfall year)<br>(line yield year)</p>
+<p><img src="https://i.loli.net/2021/11/24/kSXRjAVt78G4bzD.png" alt="image-20211124113400944"></p>
+</blockquote>
+<p>5.坐标轴标题</p>
+<p>纵坐标标题：ytitle()<br>横坐标标题：xtitle()</p>
+<p>6.坐标轴刻度</p>
+<p>左纵坐标刻度：ytick()<br>下横坐标刻度：xtick()</p>
+<p>7.任意水平线与垂直线：yline()与xline()</p>
+<p>8.图例legend（）</p>
+<p>legend(off)</p>
+<p>定制图例：</p>
+<p><img src="https://i.loli.net/2021/11/24/cU8Gtrn1dBRabTi.png" alt="image-20211124113840044"></p>
+<p>9.脚注：note()</p>
+<h2 id="常用的图"><a href="#常用的图" class="headerlink" title="常用的图"></a>常用的图</h2><blockquote>
+<p>我会用stata作图，替换工具很多比如spss</p>
+</blockquote>
+<pre><code>    Command               Description
+    --------------------------------------------------------------------
+    histogram             histograms直方图,经验分布图
+    lfit                  拟合曲线
+    symplot               symmetry plots
+    quantile              quantile plots
+    qnorm                 quantile-normal plots
+    pnorm                 normal probability plots, standardized
+    qchi                  chi-squared quantile plots
+    pchi                  chi-squared probability plots
+    qqplot                quantile-quantile plots
+
+    gladder               ladder-of-powers plots
+    qladder               ladder-of-powers quantiles
+
+    spikeplot             spike plots and rootograms
+    dotplot               means or medians by group
+    sunflower             density-distribution sunflower plots
+    --------------------------------------------------------------------
+</code></pre>
+<blockquote>
+<p>多个图  twoway (画图命令1) (画图命令2) by(如果要分类)</p>
+<p>单个图  histogram  xxx</p>
+</blockquote>
+<h3 id="经验分布图"><a href="#经验分布图" class="headerlink" title="经验分布图"></a>经验分布图</h3><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214230604952.png" class="" title="image-20211214230604952">
+
+
+
+<blockquote>
+<p>histogram xxx,width(0.5)</p>
+</blockquote>
+<h1 id="描述性统计的计算"><a href="#描述性统计的计算" class="headerlink" title="描述性统计的计算"></a>描述性统计的计算</h1><img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214215346206.png" class="" title="image-20211214215346206">
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214215427704.png" class="" title="image-20211214215427704">
+
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214215533969.png" class="" title="image-20211214215533969">
+
+<p>分位数（四分位数等）、标准差、极差</p>
+<blockquote>
+<p>su wage,detail</p>
+</blockquote>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/Snipaste_2021-12-14_22-32-37-16394930625701.png" class="" title="Snipaste_2021-12-14_22-32-37">
+
+<p>算术平均数、集合平均数、调和平均数</p>
+<blockquote>
+<p>ameans wage</p>
+</blockquote>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214224132600.png" class="" title="image-20211214224132600">
+
+<p>离散趋势度量：</p>
+<blockquote>
+<p>tabstat wage,stat(range variance sd iqr cv)</p>
+<p>range极差</p>
+<p>variance方差</p>
+<p>sd标准差</p>
+<p>iqr四分位差 75%分为数-25%分位数</p>
+<p>cv 离散系数 = 标准差Std. Dev./均值mean</p>
+</blockquote>
+<p>通过help tabstat查看更多</p>
+<img src="/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/image-20211214224149471.png" class="" title="image-20211214224149471">
+
+
+
+
+
+
+
+<p>变量保存 </p>
+<p>return ls</p>
+<p>su sale if colour==1</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">chou</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://hutters.gitee.io/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/">https://hutters.gitee.io/blog/2022/02/12/stata%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://hutters.gitee.io/blog" target="_blank">blog for chou</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/python/">python</a><a class="post-meta__tags" href="/blog/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/blog/tags/stata/">stata</a></div><div class="post_share"><div class="social-share" data-image="https://api.yimian.xyz/img?type=wallpaper" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blog/2022/02/12/termux%E8%BF%90%E8%A1%8Cpython/"><img class="prev-cover" src="https://hutters.gitee.io/imgs/termux.png" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">termux运行python</div></div></a></div><div class="next-post pull-right"><a href="/blog/2022/02/12/Office%E6%8A%80%E5%B7%A7/"><img class="next-cover" src="https://s2.loli.net/2021/12/10/zB1P2y95VXRekQf.jpg" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">office技巧合集</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/blog/2021/11/30/python%E7%AC%94%E8%AE%B0/" title="python学习笔记"><img class="cover" src="https://i.loli.net/2021/11/30/YPOBa8xErfRpNJI.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-30</div><div class="title">python学习笔记</div></div></a></div><div><a href="/blog/2022/02/12/aidlearning%E4%BD%BF%E7%94%A8/" title="aidlearning"><img class="cover" src="https://hutters.gitee.io/imgs/termux.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-12</div><div class="title">aidlearning</div></div></a></div><div><a href="/blog/2021/12/07/pandas%E8%BF%9E%E6%8E%A5MongoDB%EF%BC%88%E7%99%BD%E5%AB%96%EF%BC%89/" title="实时数据库探索"><img class="cover" src="https://i.loli.net/2021/11/30/YPOBa8xErfRpNJI.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-07</div><div class="title">实时数据库探索</div></div></a></div><div><a href="/blog/2022/02/12/termux%E8%BF%90%E8%A1%8Cpython/" title="termux运行python"><img class="cover" src="https://hutters.gitee.io/imgs/termux.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-12</div><div class="title">termux运行python</div></div></a></div><div><a href="/blog/2022/02/12/%E9%AA%8C%E8%AF%81%E7%A0%81api/" title="搭建一个识别验证码的api"><img class="cover" src="https://api.yimian.xyz/img?type=wallpaper" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-12</div><div class="title">搭建一个识别验证码的api</div></div></a></div><div><a href="/blog/2022/02/12/%E8%BF%90%E8%90%A5%E7%AE%A1%E7%90%86/" title="运营管理"><img class="cover" src="https://hutters.gitee.io/imgs/学习.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-02-12</div><div class="title">运营管理</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/11/30/ZeyqM7NvoDnwuLp.png" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">chou</div><div class="author-info__description">记录自己python、学习笔记等</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">17</div></a></div><div class="card-info-data-item is-center"><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">25</div></a></div><div class="card-info-data-item is-center"><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/CallMeChou"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/CallMeChou" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:3122107411@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">没有什么会一成不变,太阳的光芒也会有一天暗淡下来</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#help"><span class="toc-number">1.1.</span> <span class="toc-text">help</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#search"><span class="toc-number">1.2.</span> <span class="toc-text">search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cd"><span class="toc-number">1.3.</span> <span class="toc-text">cd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#memory"><span class="toc-number">1.4.</span> <span class="toc-text">memory</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E4%BF%9D%E7%95%99%E4%B8%A4%E4%BD%8D%E5%B0%8F%E6%95%B0-f-9-2f"><span class="toc-number">1.5.</span> <span class="toc-text">输出保留两位小数 f(%9.2f)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A4%94%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="toc-number">1.6.</span> <span class="toc-text">🤔输出结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E5%92%8C%E4%BF%9D%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="toc-number">1.7.</span> <span class="toc-text">打开和保存数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%A2-clear-%E6%B8%85%E7%A9%BA%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE"><span class="toc-number">1.7.1.</span> <span class="toc-text">• clear 清空内存数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%A2-use-%E6%89%93%E5%BC%80STATA-%E6%A0%BC%E5%BC%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.7.2.</span> <span class="toc-text">• use 打开STATA 格式的数据文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%A2-save-%E4%BF%9D%E5%AD%98%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">1.7.3.</span> <span class="toc-text">• save 保存内存中的数据</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#input"><span class="toc-number">1.8.</span> <span class="toc-text">input</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#end"><span class="toc-number">1.9.</span> <span class="toc-text">end</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sum"><span class="toc-number">1.10.</span> <span class="toc-text">sum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sort"><span class="toc-number">1.11.</span> <span class="toc-text">sort</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gen"><span class="toc-number">1.12.</span> <span class="toc-text">gen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#egen"><span class="toc-number">1.13.</span> <span class="toc-text">egen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rename"><span class="toc-number">1.14.</span> <span class="toc-text">rename</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#replace"><span class="toc-number">1.15.</span> <span class="toc-text">replace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#edit"><span class="toc-number">1.16.</span> <span class="toc-text">edit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#display"><span class="toc-number">1.17.</span> <span class="toc-text">display</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#describ"><span class="toc-number">1.18.</span> <span class="toc-text">describ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#set-more-off-on"><span class="toc-number">1.19.</span> <span class="toc-text">set more off&#x2F;on</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#clear"><span class="toc-number">1.20.</span> <span class="toc-text">clear</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#drop"><span class="toc-number">1.21.</span> <span class="toc-text">drop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tabulate"><span class="toc-number">1.22.</span> <span class="toc-text">tabulate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list"><span class="toc-number">1.23.</span> <span class="toc-text">list</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9A%82%E6%97%B6%E6%B2%A1%E7%94%A8%E5%88%B0%E7%9A%84"><span class="toc-number">1.24.</span> <span class="toc-text">暂时没用到的</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB"><span class="toc-number">2.</span> <span class="toc-text">命令汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E5%AE%8C%E6%95%B4%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">1.创建完整文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%89%8D%E6%8B%86%E5%88%86%E5%90%88%E5%B9%B6%E6%95%B0%E6%8D%AE"><span class="toc-number">2.2.</span> <span class="toc-text">2.才拆分合并数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E9%87%8D%E7%BB%84"><span class="toc-number">2.3.</span> <span class="toc-text">3.数据重组</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E7%9C%81%E7%95%A5%E8%A7%84%E5%88%99"><span class="toc-number">3.</span> <span class="toc-text">变量的省略规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">4.</span> <span class="toc-text">变量命名规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%AF%AD%E5%8F%A5"><span class="toc-number">5.</span> <span class="toc-text">命令语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#command"><span class="toc-number">5.1.</span> <span class="toc-text">command</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#varlist"><span class="toc-number">5.2.</span> <span class="toc-text">varlist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#by-varlist-%E5%88%86%E7%B1%BB%E6%93%8D%E4%BD%9C"><span class="toc-number">5.3.</span> <span class="toc-text">by varlist 分类操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E5%8F%8A%E8%BF%90%E7%AE%97-exp"><span class="toc-number">5.4.</span> <span class="toc-text">赋值及运算&#x3D;exp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4%E7%AD%9B%E9%80%89in-range"><span class="toc-number">5.5.</span> <span class="toc-text">范围筛选in range</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%9D%83weight"><span class="toc-number">5.6.</span> <span class="toc-text">加权weight</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8F%AF%E9%80%89%E9%A1%B9-options"><span class="toc-number">5.7.</span> <span class="toc-text">其他可选项,options</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#detail%E5%8F%AF%E4%BB%A5%E6%98%BE%E7%A4%BA%E7%BB%86%E8%8A%82%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-number">5.7.1.</span> <span class="toc-text">detail可以显示细节的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sep-x-%E6%AF%8Fx%E8%A1%8C%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%A8%AA%E7%BA%BF"><span class="toc-number">5.7.2.</span> <span class="toc-text">sep(x)每x行添加一个横线</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text">数据类型转化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%9E%8B%E8%BD%AC%E5%8C%96%E6%88%90%E6%95%B0%E5%80%BC%E5%9E%8B%EF%BC%9Adestring"><span class="toc-number">6.1.</span> <span class="toc-text">字符型转化成数值型：destring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E5%9E%8B%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%AD%97%E7%AC%A6%E5%9E%8B%EF%BC%9Atostring"><span class="toc-number">6.2.</span> <span class="toc-text">数值型转化为字符型：tostring</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%98%BE%E7%A4%BA%E6%A0%BC%E5%BC%8F-format"><span class="toc-number">7.</span> <span class="toc-text">数据显示格式:format</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#stata%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text">stata函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E3%80%81F%E5%88%86%E5%B8%83%E3%80%81%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83%E7%9A%84%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6%E5%92%8C%E5%88%86%E4%BD%8D%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">正态分布、F分布、卡方分布的概率密度和分位数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#normal-%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-number">9.1.</span> <span class="toc-text">normal 正态分布概率密度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#invnormal%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E5%88%86%E4%BD%8D%E6%95%B0"><span class="toc-number">9.2.</span> <span class="toc-text">invnormal正态分布分位数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t%E5%88%86%E5%B8%83%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-number">9.3.</span> <span class="toc-text">t分布概率密度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#t%E5%88%86%E5%B8%83%E5%88%86%E4%BD%8D%E6%95%B0%E8%AE%A1%E7%AE%97"><span class="toc-number">9.4.</span> <span class="toc-text">t分布分位数计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-number">9.5.</span> <span class="toc-text">卡方分布概率密度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83%E5%88%86%E4%BD%8D%E6%95%B0"><span class="toc-number">9.6.</span> <span class="toc-text">卡方分布分位数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F%E5%88%86%E5%B8%83%E6%A6%82%E7%8E%87%E5%AF%86%E5%BA%A6"><span class="toc-number">9.7.</span> <span class="toc-text">F分布概率密度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F%E5%88%86%E5%B8%83%E5%88%86%E4%BD%8D%E6%95%B0"><span class="toc-number">9.8.</span> <span class="toc-text">F分布分位数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E4%BC%B0%E8%AE%A1%EF%BC%88%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">区间估计（补充知识）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C%EF%BC%88%E8%A1%A5%E5%85%85%EF%BC%89"><span class="toc-number">11.</span> <span class="toc-text">假设检验（补充）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">11.1.</span> <span class="toc-text">传统假设检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%97%E5%BE%85%E5%AE%8C%E5%96%84-p%E5%80%BC%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">11.2.</span> <span class="toc-text">(❗待完善)p值假设检验</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83%E5%BD%A2%E6%80%81%E5%92%8C%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">12.</span> <span class="toc-text">变量分布形态和假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E7%8A%B6%E5%86%B5"><span class="toc-number">12.1.</span> <span class="toc-text">分布状况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">12.2.</span> <span class="toc-text">假设检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">12.2.1.</span> <span class="toc-text">参数假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%8F%82%E6%95%B0%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">12.2.2.</span> <span class="toc-text">非参数的假设检验</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0%E8%AE%A1%E7%AE%97%E5%92%8C%E6%A3%80%E9%AA%8C"><span class="toc-number">13.</span> <span class="toc-text">相关系数计算和检验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%80%A7%E8%AE%A1%E7%AE%97"><span class="toc-number">13.1.</span> <span class="toc-text">相关性计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83%E6%A3%80%E6%9F%A5%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89"><span class="toc-number">13.2.</span> <span class="toc-text">多变量分布检查（了解）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E5%92%8C%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90"><span class="toc-number">14.</span> <span class="toc-text">单变量和多变量的统计分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%A0%B7%E6%9C%AC%E4%B8%8B%E6%80%BB%E4%BD%93%E5%9D%87%E5%80%BC%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">14.1.</span> <span class="toc-text">单样本下总体均值的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E5%9E%8B%E6%88%90%E7%BB%84%E8%AE%BE%E8%AE%A1%E4%B8%A4%E6%A0%B7%E6%9C%AC%E6%80%BB%E4%BD%93%E5%9D%87%E5%80%BC%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">14.2.</span> <span class="toc-text">参数型成组设计两样本总体均值的比较</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E9%9C%80%E8%A6%81%E5%85%88%E5%AF%B9%E6%AF%8F%E7%BB%84%E5%8F%98%E9%87%8F%E8%BF%9B%E8%A1%8C%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="toc-number">14.2.1.</span> <span class="toc-text">第一步.需要先对每组变量进行正态分布的假设检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E6%96%B9%E5%B7%AE%E9%BD%90%E6%80%A7%E6%A3%80%E9%AA%8C"><span class="toc-number">14.2.2.</span> <span class="toc-text">第二步.方差齐性检验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E5%89%8D%E4%B8%A4%E6%AD%A5%E9%83%BD%E6%BB%A1%E8%B6%B3%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B"><span class="toc-number">14.2.3.</span> <span class="toc-text">第三步.前两步都满足的情况下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E5%8F%82%E6%95%B0%E6%80%A7%E6%80%BB%E4%BD%93%E5%9D%87%E5%80%BC%E6%AF%94%E8%BE%83"><span class="toc-number">14.3.</span> <span class="toc-text">非参数性总体均值比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-number">14.4.</span> <span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E7%8B%AC%E7%AB%8B%E6%A0%B7%E6%9C%AC%E7%9A%84%E5%9D%87%E5%80%BC%EF%BC%88%E4%B8%AD%E4%BD%8D%E6%95%B0%EF%BC%89%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">14.5.</span> <span class="toc-text">多个独立样本的均值（中位数）的比较</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90-%E5%8D%95%E5%9B%A0%E7%B4%A0%EF%BC%88%E8%A1%A5%E5%85%85%EF%BC%89"><span class="toc-number">15.</span> <span class="toc-text">方差分析-单因素（补充）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">15.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%81%87%E8%AE%BE"><span class="toc-number">15.2.</span> <span class="toc-text">提假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3%E5%92%8C%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E6%96%B9%E5%B7%AE%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-number">15.3.</span> <span class="toc-text">方差分析的基本思想和原理——方差的比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%AD%A5%E9%AA%A4"><span class="toc-number">15.4.</span> <span class="toc-text">计算步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stata-%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95"><span class="toc-number">15.5.</span> <span class="toc-text">stata 处理方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E5%B7%AE%E5%88%86%E6%9E%90-%E5%8F%8C%E5%9B%A0%E7%B4%A0"><span class="toc-number">16.</span> <span class="toc-text">方差分析-双因素</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#stata%E7%BB%98%E5%9B%BE"><span class="toc-number">17.</span> <span class="toc-text">stata绘图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-number">17.1.</span> <span class="toc-text">基本命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%9B%BE%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">17.2.</span> <span class="toc-text">绘图常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E9%A2%98%E9%A1%B9-title-xxx"><span class="toc-number">17.2.1.</span> <span class="toc-text">标题项: title(xxx)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%89%AF%E6%A0%87%E9%A2%98%EF%BC%9Asubtitle-xxx"><span class="toc-number">17.2.2.</span> <span class="toc-text">图的副标题：subtitle(xxx)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E8%BD%B4%E6%A0%BC%E5%BC%8F"><span class="toc-number">17.2.3.</span> <span class="toc-text">坐标轴格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9B%BE"><span class="toc-number">17.3.</span> <span class="toc-text">常用的图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%8F%E9%AA%8C%E5%88%86%E5%B8%83%E5%9B%BE"><span class="toc-number">17.3.1.</span> <span class="toc-text">经验分布图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E6%80%A7%E7%BB%9F%E8%AE%A1%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="toc-number">18.</span> <span class="toc-text">描述性统计的计算</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/2022/02/12/%E9%AA%8C%E8%AF%81%E7%A0%81api/" title="搭建一个识别验证码的api"><img src="https://api.yimian.xyz/img?type=wallpaper" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="搭建一个识别验证码的api"/></a><div class="content"><a class="title" href="/blog/2022/02/12/%E9%AA%8C%E8%AF%81%E7%A0%81api/" title="搭建一个识别验证码的api">搭建一个识别验证码的api</a><time datetime="2022-02-12T12:02:44.933Z" title="发表于 2022-02-12 20:02:44">2022-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2022/02/12/%E9%9D%92%E6%9F%A0%E7%96%AB%E6%9C%8D%E6%89%93%E5%8D%A1/" title="打卡说明——青柠疫服"><img src="https://s2.loli.net/2022/02/09/u1mzMBUcrPoO3y9.png" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="打卡说明——青柠疫服"/></a><div class="content"><a class="title" href="/blog/2022/02/12/%E9%9D%92%E6%9F%A0%E7%96%AB%E6%9C%8D%E6%89%93%E5%8D%A1/" title="打卡说明——青柠疫服">打卡说明——青柠疫服</a><time datetime="2022-02-12T12:02:44.932Z" title="发表于 2022-02-12 20:02:44">2022-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2022/02/12/%E8%BF%90%E8%90%A5%E7%AE%A1%E7%90%86/" title="运营管理"><img src="https://hutters.gitee.io/imgs/学习.png" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="运营管理"/></a><div class="content"><a class="title" href="/blog/2022/02/12/%E8%BF%90%E8%90%A5%E7%AE%A1%E7%90%86/" title="运营管理">运营管理</a><time datetime="2022-02-12T12:02:44.930Z" title="发表于 2022-02-12 20:02:44">2022-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2022/02/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="数据库操作技巧"><img src="https://api.yimian.xyz/img?type=wallpaper" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="数据库操作技巧"/></a><div class="content"><a class="title" href="/blog/2022/02/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C%E6%8A%80%E5%B7%A7/" title="数据库操作技巧">数据库操作技巧</a><time datetime="2022-02-12T12:02:44.926Z" title="发表于 2022-02-12 20:02:44">2022-02-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2022/02/12/%E6%8C%82%E4%BA%AC%E4%B8%9C%E8%AF%B4%E6%98%8E/" title="京东说明"><img src="https://img2.baidu.com/it/u=1007188585,453085648&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="京东说明"/></a><div class="content"><a class="title" href="/blog/2022/02/12/%E6%8C%82%E4%BA%AC%E4%B8%9C%E8%AF%B4%E6%98%8E/" title="京东说明">京东说明</a><time datetime="2022-02-12T12:02:44.924Z" title="发表于 2022-02-12 20:02:44">2022-02-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By chou</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">逆境造就蠢货，困难成就天才</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/blog/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'xYYcQSI8kfVvpPxbq8XFzMqH-gzGzoHsz',
+      appKey: 'Vpe5YORzq2Kngd0XiFezoKzD',
+      placeholder: '有什么问题留下评论吧~',
+      avatar: 'monsterid',
+      meta: '阁下留个名字,email'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: true,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["阁下留个名字,email"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
