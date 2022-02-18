@@ -319,13 +319,6 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/turmux/</loc>
-    <lastmod>2022-02-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hutters.gitee.io/blog/tags/%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2022-02-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -341,6 +334,13 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/tags/%E5%B7%A5%E5%85%B7%E7%AE%B1/</loc>
+    <lastmod>2022-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/turmux/</loc>
     <lastmod>2022-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
