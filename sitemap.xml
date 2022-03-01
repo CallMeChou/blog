@@ -298,6 +298,27 @@
   </url>
   
   <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E5%AE%9E%E7%94%A8/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E5%B7%A5%E5%85%B7%E7%AE%B1/</loc>
+    <lastmod>2022-03-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hutters.gitee.io/blog/tags/%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
@@ -326,21 +347,7 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E7%BD%91%E7%AB%99/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E5%AE%9E%E7%94%A8/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E5%B7%A5%E5%85%B7%E7%AE%B1/</loc>
+    <loc>https://hutters.gitee.io/blog/tags/git/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -348,13 +355,6 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/tags/%E7%94%B5%E8%84%91%E6%8A%80%E5%B7%A7/</loc>
-    <lastmod>2022-03-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/git/</loc>
     <lastmod>2022-03-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
