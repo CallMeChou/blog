@@ -209,13 +209,6 @@
 
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/office/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://hutters.gitee.io/blog/tags/aidlux/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -231,6 +224,20 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/tags/python/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/office/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/bat/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -259,13 +266,6 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/bat/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -307,7 +307,21 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/stata/</loc>
+    <loc>https://hutters.gitee.io/blog/tags/%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E5%AE%9E%E7%94%A8/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://hutters.gitee.io/blog/tags/%E5%B7%A5%E5%85%B7%E7%AE%B1/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -335,21 +349,7 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E7%BD%91%E7%AB%99/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E5%AE%9E%E7%94%A8/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/tags/%E5%B7%A5%E5%85%B7%E7%AE%B1/</loc>
+    <loc>https://hutters.gitee.io/blog/tags/stata/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -400,6 +400,13 @@
 
   
   <url>
+    <loc>https://hutters.gitee.io/blog/categories/python/</loc>
+    <lastmod>2022-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://hutters.gitee.io/blog/categories/office%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -407,7 +414,7 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/categories/python/</loc>
+    <loc>https://hutters.gitee.io/blog/categories/bat/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -421,7 +428,7 @@
   </url>
   
   <url>
-    <loc>https://hutters.gitee.io/blog/categories/bat/</loc>
+    <loc>https://hutters.gitee.io/blog/categories/%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -436,13 +443,6 @@
   
   <url>
     <loc>https://hutters.gitee.io/blog/categories/mysql/</loc>
-    <lastmod>2022-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://hutters.gitee.io/blog/categories/%E7%BD%91%E7%AB%99%E5%90%88%E9%9B%86/</loc>
     <lastmod>2022-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
